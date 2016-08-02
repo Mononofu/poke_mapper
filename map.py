@@ -21,8 +21,11 @@ def index():
   def yield_ids():
     for p in list_pokemon():
       yield p['id']
+  pokemon_counts = collections.Counter(yield_ids())
+  total_pokemons = sum(pokemon_counts.itervalues())
   return flask.render_template('index.html',
-                               pokemon_counts=collections.Counter(yield_ids()),
+                               pokemon_counts=pokemon_counts,
+                               total_pokemons=total_pokemons,
                                pokedex=pokedex)
 
 
