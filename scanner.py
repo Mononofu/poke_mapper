@@ -131,7 +131,8 @@ class ScanThread(threading.Thread):
       min_batch_duration = self.batch_size * (self.scan_interval + 1)
       expired = self.api._auth_provider._ticket_expire / 1000 - time.time() < min_batch_duration
       if expired:
-        logging.info('login ticket expired')
+        logging.info('login ticket expired for %s', self.credentials[1])
+        self.api = PGoApi()
       return not expired
     else:
       return False
