@@ -1,0 +1,3 @@
+*.pyc
+pokemon.db
+pokemon.db-journal
