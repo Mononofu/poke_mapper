@@ -26,7 +26,7 @@ class IndexDriver(object):
   def __init__(self):
     self.db_lock = threading.Lock()
 
-    self.conn = sqlite3.connect(os.path.join(os.path.dirname(__file__), 'pokemon.db'), check_same_thread=False)
+    self.conn = sqlite3.connect(os.path.join(os.path.expanduser('~'), 'pokemon.db'), check_same_thread=False)
     # Sqlite doesn't support uint64, so we have to store them as text..
     self.conn.execute('''CREATE TABLE IF NOT EXISTS Pokemon
                          (encounter_id text, pokemon_id integer, latitude real,
